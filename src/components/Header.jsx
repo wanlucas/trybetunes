@@ -5,8 +5,13 @@ import { getUser } from '../services/userAPI';
 export default class Header extends Component {
   state = {
     userName: '',
+    searchDisabled: true,
     isLoading: true,
   };
+
+  rules = {
+    minimunSearchLength: 2,
+  }
 
   componentDidMount() {
     this.getUserName();
@@ -21,8 +26,15 @@ export default class Header extends Component {
     });
   }
 
+  handleChange = ({ target: { value } }) => {
+    const { minimunSearchLength } = this.rules;
+    const searchValueIsInvalid = value.length < minimunSearchLength;
+
+    this.setState({ searchDisabled: searchValueIsInvalid });
+  }
+
   render() {
-    const { userName, isLoading } = this.state;
+    const { userName, isLoading, searchDisabled } = this.state;
 
     return isLoading ? <div> Carregando... </div> : (
       <header data-testid="header-component">
@@ -33,11 +45,33 @@ export default class Header extends Component {
           </div>
         </div>
 
-        <nav>
-          <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-          <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
-          <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
-        </nav>
+        <div>
+          <nav>
+            <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
+            <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
+            <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          </nav>
+
+          <form>
+            <label htmlFor="search-bar">
+              Nome do artista
+              <input
+                id="search-bar"
+                type="text"
+                data-testid="search-artist-input"
+                onChange={ this.handleChange }
+              />
+            </label>
+
+            <button
+              type="button"
+              disabled={ searchDisabled }
+              data-testid="search-artist-button"
+            >
+              Buscar
+            </button>
+          </form>
+        </div>
       </header>
     );
   }
