@@ -63,13 +63,12 @@ export default class Header extends Component {
               />
             </label>
 
-            <button
-              type="button"
+            <input
+              type="submit"
               disabled={ searchDisabled }
               data-testid="search-artist-button"
-            >
-              Buscar
-            </button>
+              value="Buscar"
+            />
           </form>
         </div>
       </header>
