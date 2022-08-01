@@ -45,37 +45,33 @@ export default class Login extends Component {
   render() {
     const { loginDisabled, isLoading } = this.state;
 
-    return (
-      isLoading ? (
-        <div> Carregando... </div>
-      ) : (
-        <div data-testid="page-login">
-          <form>
-            <input
-              type="text"
-              onChange={ this.handleChange }
-              name="name"
-              placeholder="Name"
-              data-testid="login-name-input"
-            />
+    return isLoading ? <div> Carregando... </div> : (
+      <div data-testid="page-login">
+        <form>
+          <input
+            type="text"
+            onChange={ this.handleChange }
+            name="name"
+            placeholder="Name"
+            data-testid="login-name-input"
+          />
 
-            <input
-              type="password"
-              name="password"
-              onChange={ this.handleChange }
-              placeholder="Password"
-            />
+          <input
+            type="password"
+            name="password"
+            onChange={ this.handleChange }
+            placeholder="Password"
+          />
 
-            <input
-              type="submit"
-              value="Entrar"
-              disabled={ loginDisabled }
-              onClick={ this.saveUser }
-              data-testid="login-submit-button"
-            />
-          </form>
-        </div>
-      )
+          <input
+            type="submit"
+            value="Entrar"
+            disabled={ loginDisabled }
+            onClick={ this.saveUser }
+            data-testid="login-submit-button"
+          />
+        </form>
+      </div>
     );
   }
 }
