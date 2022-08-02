@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 
 class App extends React.Component {
   render() {
+<<<<<<< HEAD
     return (
       <Switch>
         <Route exact path="/" component={ Login } />
@@ -21,6 +22,9 @@ class App extends React.Component {
         <Route path="*" component={ NotFound } />
       </Switch>
     );
+=======
+    return (<p></p>);
+>>>>>>> 9fb1ca53f0725d3fe3c8505c8d50e6e245694e0c
   }
 }
 
