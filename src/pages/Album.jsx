@@ -3,23 +3,27 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
   state = {
     artistName: '',
     collectionName: '',
     songs: [],
+    favorites: [],
     isLoading: true,
   }
 
   componentDidMount = async () => {
     const { match: { params: { id } } } = this.props;
     const songs = await getMusics(id);
+    const favorites = await getFavoriteSongs();
     const { artistName, collectionName } = songs[0];
 
     this.setState({
       artistName,
       collectionName,
+      favorites,
       songs: songs.slice(1),
       isLoading: false,
     });
@@ -30,7 +34,9 @@ export default class Album extends Component {
       songs,
       artistName,
       collectionName,
-      isLoading } = this.state;
+      isLoading,
+      favorites,
+    } = this.state;
 
     return (
       <div data-testid="page-album">
@@ -45,6 +51,7 @@ export default class Album extends Component {
               {songs.map((song) => (
                 <MusicCard
                   key={ song.trackName }
+                  favorites={ favorites }
                   song={ song }
                 />
               ))}
