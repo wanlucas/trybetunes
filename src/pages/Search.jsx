@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import searchAlbum from '../services/searchAlbumsAPI';
+import MusicCard from '../components/MusicCard';
 
 export default class Search extends Component {
   state = {
     artist: '',
+    artistName: '',
     searchDisabled: true,
+    albums: [],
   }
 
   rules = {
@@ -25,13 +28,13 @@ export default class Search extends Component {
   searchArtist = async (event) => {
     event.preventDefault();
     const { artist } = this.state;
-    const album = await searchAlbum(artist);
+    const albums = await searchAlbum(artist);
 
-    console.log(album);
+    this.setState({ albums, artist: '', artistName: artist });
   }
 
   render() {
-    const { searchDisabled } = this.state;
+    const { searchDisabled, albums, artist, artistName } = this.state;
 
     return (
       <div data-testid="page-search">
@@ -42,6 +45,7 @@ export default class Search extends Component {
             <input
               id="search-bar"
               type="text"
+              value={ artist }
               data-testid="search-artist-input"
               onChange={ this.handleChange }
             />
@@ -54,6 +58,18 @@ export default class Search extends Component {
             value="Buscar"
           />
         </form>
+
+        <div>
+          <span>{`Resultado de álbuns de: ${artistName}`}</span>
+
+          <div className="albums-list">
+            {!albums.length && <span> Nenhum álbum foi encontrado </span>}
+
+            {albums.map((album) => (
+              <MusicCard key={ album.collectionId } album={ album } />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
