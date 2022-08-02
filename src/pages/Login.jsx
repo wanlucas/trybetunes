@@ -7,7 +7,6 @@ export default class Login extends Component {
     loginDisabled: true,
     isLoading: false,
     name: '',
-    password: '',
   };
 
   rules = {
