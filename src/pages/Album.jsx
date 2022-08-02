@@ -46,7 +46,6 @@ export default class Album extends Component {
                 <MusicCard
                   key={ song.trackName }
                   song={ song }
-                  play={ this.play }
                 />
               ))}
             </ul>
