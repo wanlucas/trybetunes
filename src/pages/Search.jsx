@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import searchAlbum from '../services/searchAlbumsAPI';
-import MusicCard from '../components/MusicCard';
+import AlbumCard from '../components/AlbumCard';
 
 export default class Search extends Component {
   state = {
@@ -66,7 +66,7 @@ export default class Search extends Component {
             {!albums.length && <span> Nenhum álbum foi encontrado </span>}
 
             {albums.map((album) => (
-              <MusicCard key={ album.collectionId } album={ album } />
+              <AlbumCard key={ album.collectionId } album={ album } />
             ))}
           </div>
         </div>
