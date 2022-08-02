@@ -9,6 +9,14 @@ export default class MusicCard extends Component {
     isLoading: false,
   }
 
+  componentDidMount() {
+    const { favorites, song: { trackId } } = this.props;
+
+    this.setState({
+      checked: favorites.some((song) => song.trackId === trackId),
+    });
+  }
+
   handleChange = async ({ target: { checked } }) => {
     const { song } = this.props;
 
