@@ -57,7 +57,7 @@ export default class Album extends Component {
               ))}
             </ul>
           </div>
-        )}
+        ) }
       </div>
     );
   }
