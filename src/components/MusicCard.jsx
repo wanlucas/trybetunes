@@ -18,7 +18,7 @@ export default class MusicCard extends Component {
   }
 
   handleChange = async ({ target: { checked } }) => {
-    const { song } = this.props;
+    const { song, updateFavorites } = this.props;
 
     this.setState({
       isLoading: true,
@@ -29,6 +29,7 @@ export default class MusicCard extends Component {
     else await removeSong(song);
 
     this.setState({ isLoading: false });
+    if (updateFavorites) updateFavorites();
   }
 
   render() {
@@ -48,14 +49,17 @@ export default class MusicCard extends Component {
         </div>
 
         <div className="music_card-right">
-          <input
-            type="checkbox"
-            className="favorite-icon"
-            value="Favorite"
-            checked={ checked }
-            onChange={ this.handleChange }
-            data-testid={ `checkbox-music-${trackId}` }
-          />
+          <label htmlFor="toggle-favorite" data-testid={ `checkbox-music-${trackId}` }>
+            Favorita
+            <input
+              id="toggle-favorite"
+              type="checkbox"
+              className="favorite-icon"
+              value="Favorite"
+              checked={ checked }
+              onChange={ this.handleChange }
+            />
+          </label>
         </div>
 
         <Player src={ previewUrl } />
