@@ -14,28 +14,19 @@ export default class Album extends Component {
     isLoading: true,
   }
 
-  componentDidMount() {
-    this.fetchSongs();
-    this.getFavorites();
-  }
-
-  fetchSongs = async () => {
+  componentDidMount = async () => {
     const { match: { params: { id } } } = this.props;
     const songs = await getMusics(id);
+    const favorites = await getFavoriteSongs();
     const { artistName, collectionName } = songs[0];
 
     this.setState({
       artistName,
       collectionName,
+      favorites,
       songs: songs.slice(1),
       isLoading: false,
     });
-  }
-
-  getFavorites = async () => {
-    const favorites = await getFavoriteSongs();
-
-    this.setState({ favorites });
   }
 
   render() {

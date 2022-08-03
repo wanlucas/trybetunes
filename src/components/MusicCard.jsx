@@ -49,7 +49,7 @@ export default class MusicCard extends Component {
         </div>
 
         <div className="music_card-right">
-          <label htmlFor="toggle-favorite" data-testid={ `checkbox-music-${trackId}` }>
+          <label htmlFor="toggle-favorite">
             Favorita
             <input
               id="toggle-favorite"
@@ -58,6 +58,7 @@ export default class MusicCard extends Component {
               value="Favorite"
               checked={ checked }
               onChange={ this.handleChange }
+              data-testid={ `checkbox-music-${trackId}` }
             />
           </label>
         </div>
