@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { createUser } from '../services/userAPI';
+import './login.css';
 
 export default class Login extends Component {
   state = {
@@ -45,8 +46,8 @@ export default class Login extends Component {
     const { loginDisabled, isLoading } = this.state;
 
     return isLoading ? <div> Carregando... </div> : (
-      <div data-testid="page-login">
-        <form>
+      <div className="page-login">
+        <form className="form-login">
           <input
             type="text"
             onChange={ this.handleChange }
@@ -67,9 +68,13 @@ export default class Login extends Component {
             value="Entrar"
             disabled={ loginDisabled }
             onClick={ this.saveUser }
-            data-testid="login-submit-button"
+            className="login-submit-button"
           />
         </form>
+
+        <div className="login-image">
+          <img src="https://i.pinimg.com/originals/83/6e/84/836e84586da179931d04e8aafa0a672f.jpg" alt="music-logo" />
+        </div>
       </div>
     );
   }

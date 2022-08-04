@@ -1,0 +1,16 @@
+body {
+  width: 100%;
+  margin: 0 auto;
+  background: black;
+  overflow: hidden;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
