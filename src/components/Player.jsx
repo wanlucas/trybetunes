@@ -4,6 +4,7 @@ import './player.css';
 
 export default class Player extends Component {
   state = {
+    paused: false,
     playlist: [],
     player: new Audio(),
     musicProgress: 0,
@@ -48,6 +49,20 @@ export default class Player extends Component {
     }
   }
 
+  playPauseSong = () => {
+    const { player } = this.state;
+
+    if (player.paused) player.play();
+    else player.pause();
+  }
+
+  setProgress = ({ target: { value } }) => {
+    const { player } = this.state;
+    const { duration } = player;
+
+    player.currentTime = (value / 100) * duration;
+  }
+
   updatePlayer = () => {
     const { player } = this.state;
     const { duration, currentTime } = player;
@@ -75,6 +90,7 @@ export default class Player extends Component {
             type="range"
             readOnly
             value={ musicProgress }
+            onChange={ this.setProgress }
             min={ 0 }
             max={ 100 }
           />
