@@ -2,7 +2,6 @@
   position: sticky;
   top: 0;
   width: 100%;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
 }
 
 .header-top {
@@ -14,7 +13,7 @@
   justify-content: space-between;
   padding: 8px 50px;
   background-color: rgba(25, 16, 19);
-  box-shadow: 2px 0 1px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 .header-top h1 {
@@ -26,9 +25,9 @@
   align-items: center;
   line-height: 50%;
   font-size: 1.1rem;
-  background: rgb(36, 58, 105);
+  background: rgb(55, 64, 83);
   border-radius: 20px;
-  padding: 1px 1px;
+  padding: 2px;
 }
 
 .header-user-name {
@@ -36,7 +35,7 @@
 }
 
 .default-user-image {
-  background: rgb(244, 244, 242);
+  background: rgba(255, 255, 255, 0.8);
   width: 28px;
   height: 28px;
   display: flex;
@@ -56,15 +55,15 @@
   width: 100%;
 }
 
-.nav-bar > a{
-  color: white;
-  background-color: rgb(36, 58, 105);
+.nav-bar > a {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.3);
   font-size: 0.8rem;
   width: calc(100% / 3);
-  padding: 8px;
+  padding: 5px;
 }
 
 .nav-bar > a:hover {
   transition: 0.2s;
-  background-color: rgb(57, 82, 136)
+  background-color: rgba(255, 255, 255, 0.5);
 }
