@@ -41,3 +41,9 @@ export const removeSong = (song) => new Promise((resolve) => {
   saveFavoriteSongs(favoriteSongs.filter((s) => s.trackId !== song.trackId));
   simulateRequest(SUCCESS_STATUS)(resolve);
 });
+
+export const isFavorite = ({ trackId }) => {
+  const favoriteSongs = readFavoriteSongs();
+
+  return favoriteSongs.some((song) => song.trackId === trackId);
+};
