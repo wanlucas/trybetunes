@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './header.css';
 import { getUser } from '../services/userAPI';
 
 export default class Header extends Component {
   state = {
     userName: '',
+    userImage: '',
     isLoading: true,
   };
 
@@ -13,31 +15,35 @@ export default class Header extends Component {
   }
 
   getUserName = async () => {
-    const { name } = await getUser();
+    const { name, image } = await getUser();
 
     this.setState({
       userName: name,
+      userImage: image,
       isLoading: false,
     });
   }
 
   render() {
-    const { userName, isLoading } = this.state;
+    const { userName, isLoading, userImage } = this.state;
 
     return isLoading ? <div> Carregando... </div> : (
-      <header data-testid="header-component">
+      <header className="header-component">
         <div className="header-top">
           <h1>TrybeTunes</h1>
           <div className="user-perfil">
-            <span data-testid="header-user-name">{userName}</span>
+            <span className="header-user-name">{userName}</span>
+            { userImage ? <img src={ userImage } alt={ userName } /> : (
+              <div className="default-user-image">{ userName[0] }</div>
+            ) }
           </div>
         </div>
 
         <div>
-          <nav>
-            <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-            <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
-            <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          <nav className="nav-bar">
+            <Link to="/search">Pesquisar</Link>
+            <Link to="/favorites">Favoritas</Link>
+            <Link to="/profile">Perfil</Link>
           </nav>
         </div>
       </header>
