@@ -1,0 +1,70 @@
+.header-component {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.header-top {
+  width: 100%;
+  color: white;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 50px;
+  background-color: rgba(25, 16, 19);
+  box-shadow: 2px 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.header-top h1 {
+  line-height: 100%;
+}
+
+.user-perfil {
+  display: flex;
+  align-items: center;
+  line-height: 50%;
+  font-size: 1.1rem;
+  background: rgb(36, 58, 105);
+  border-radius: 20px;
+  padding: 1px 1px;
+}
+
+.header-user-name {
+  margin: 0 5px;
+}
+
+.default-user-image {
+  background: rgb(244, 244, 242);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  line-height: 110%;
+  padding: 4px;
+  margin-left: 18px;
+  border-radius: 50%;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.nav-bar {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.nav-bar > a{
+  color: white;
+  background-color: rgb(36, 58, 105);
+  font-size: 0.8rem;
+  width: calc(100% / 3);
+  padding: 8px;
+}
+
+.nav-bar > a:hover {
+  transition: 0.2s;
+  background-color: rgb(57, 82, 136)
+}
