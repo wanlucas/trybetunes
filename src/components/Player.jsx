@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { addSong, removeSong, isFavorite } from '../services/favoriteSongsAPI';
 import './player.css';
 
 export default class Player extends Component {
   state = {
+    checked: false,
     playlist: [],
     player: new Audio(),
     musicProgress: 0,
     actIndex: 0,
+    actSong: {},
     id: '',
   }
 
@@ -15,17 +18,27 @@ export default class Player extends Component {
     const { actSong, playlist } = this.props;
     const { id } = this.state;
 
-    if (actSong === id) return;
+    if (actSong.trackId === id) return;
 
-    const actIndex = playlist.findIndex(({ trackId }) => trackId === actSong);
-    this.setState({ id: actSong, actIndex, playlist }, () => this.playSong());
+    const actIndex = playlist.findIndex(({ trackId }) => trackId === actSong.trackId);
+    this.setState({
+      id: actSong.trackId,
+      actSong,
+      actIndex,
+      playlist,
+    }, () => this.playSong());
   }
 
   playSong = () => {
     const { playlist, player, actIndex } = this.state;
-    const { previewUrl } = playlist[actIndex];
+    const actSong = playlist[actIndex];
 
-    player.src = previewUrl;
+    this.setState({
+      actSong,
+      checked: isFavorite(actSong),
+    });
+
+    player.src = actSong.previewUrl;
     player.ontimeupdate = () => this.updatePlayer();
     player.play();
   }
@@ -79,11 +92,32 @@ export default class Player extends Component {
     this.setState({ musicProgress });
   }
 
+  handleFavorite = async ({ target: { checked } }) => {
+    const { actSong } = this.state;
+
+    if (checked) await addSong(actSong);
+    else await removeSong(actSong);
+
+    this.setState({ checked });
+  }
+
   render() {
-    const { musicProgress } = this.state;
+    const { musicProgress, actSong, checked } = this.state;
+    const { trackName, collectionName, artworkUrl60 } = actSong;
 
     return (
       <section className="player">
+        <div className="player-left">
+          <img src={ artworkUrl60 } alt={ collectionName } />
+
+          <div>
+            <h5>{ trackName }</h5>
+            <p>{ collectionName }</p>
+          </div>
+
+          <input type="checkbox" checked={ checked } onChange={ this.handleFavorite } />
+        </div>
+
         <div className="player-center">
           <div>
             <button type="button" onClick={ this.prevSong }>prev</button>
