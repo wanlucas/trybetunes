@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Player from './Player';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 export default class MusicCard extends Component {
@@ -34,8 +33,8 @@ export default class MusicCard extends Component {
 
   render() {
     const { checked, isLoading } = this.state;
-    const { song } = this.props;
-    const { collectionName, trackName, artworkUrl100, previewUrl, trackId } = song;
+    const { song, play } = this.props;
+    const { collectionName, trackName, artworkUrl100, trackId } = song;
 
     return isLoading ? <span>Carregando...</span> : (
       <li className="music_card">
@@ -43,6 +42,7 @@ export default class MusicCard extends Component {
           <input
             type="button"
             value="Play"
+            onClick={ () => play(song) }
           />
           <img src={ artworkUrl100 } alt={ collectionName } />
           <h3>{ trackName }</h3>
@@ -62,8 +62,6 @@ export default class MusicCard extends Component {
             />
           </label>
         </div>
-
-        <Player src={ previewUrl } />
       </li>
     );
   }
