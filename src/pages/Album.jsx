@@ -31,8 +31,8 @@ export default class Album extends Component {
     });
   }
 
-  play = (songId) => {
-    this.setState({ actSong: songId });
+  play = (song) => {
+    this.setState({ actSong: song });
   }
 
   render() {
