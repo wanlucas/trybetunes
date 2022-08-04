@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import Player from '../components/Player';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
   state = {
     artistName: '',
     collectionName: '',
+    actSong: '',
     songs: [],
     favorites: [],
     isLoading: true,
@@ -29,6 +31,10 @@ export default class Album extends Component {
     });
   }
 
+  play = (songId) => {
+    this.setState({ actSong: songId });
+  }
+
   render() {
     const {
       songs,
@@ -36,6 +42,7 @@ export default class Album extends Component {
       collectionName,
       isLoading,
       favorites,
+      actSong,
     } = this.state;
 
     return (
@@ -53,9 +60,12 @@ export default class Album extends Component {
                   key={ song.trackName }
                   favorites={ favorites }
                   song={ song }
+                  play={ this.play }
                 />
               ))}
             </ul>
+
+            <Player playlist={ songs } actSong={ actSong } />
           </div>
         ) }
       </div>

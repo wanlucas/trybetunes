@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
+import Player from '../components/Player';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Favorites extends Component {
   state = {
     favorites: [],
     isLoading: true,
+    actSong: '',
   };
 
   componentDidMount = () => this.getFavoriteSongs();
@@ -21,8 +23,12 @@ export default class Favorites extends Component {
     });
   }
 
+  play = (song) => {
+    this.setState({ actSong: song });
+  }
+
   render() {
-    const { favorites, isLoading } = this.state;
+    const { favorites, isLoading, actSong } = this.state;
 
     return isLoading ? <span>Carregando...</span> : (
       <div data-testid="page-favorites">
@@ -34,12 +40,15 @@ export default class Favorites extends Component {
               <MusicCard
                 key={ song.trackName }
                 favorites={ favorites }
+                play={ this.play }
                 song={ song }
                 updateFavorites={ this.getFavoriteSongs }
               />
             ))}
           </ul>
         </div>
+
+        <Player playlist={ favorites } actSong={ actSong } />
       </div>
     );
   }
