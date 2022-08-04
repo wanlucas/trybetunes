@@ -4,7 +4,6 @@ import './player.css';
 
 export default class Player extends Component {
   state = {
-    paused: false,
     playlist: [],
     player: new Audio(),
     musicProgress: 0,
@@ -63,6 +62,13 @@ export default class Player extends Component {
     player.currentTime = (value / 100) * duration;
   }
 
+  changeVolume = ({ target: { value } }) => {
+    const { player } = this.state;
+    const volume = value / 100;
+
+    player.volume = volume;
+  }
+
   updatePlayer = () => {
     const { player } = this.state;
     const { duration, currentTime } = player;
@@ -78,19 +84,30 @@ export default class Player extends Component {
 
     return (
       <section className="player">
-        <div>
-          <button type="button" onClick={ this.prevSong }>prev</button>
-          <button type="button" onClick={ this.playPauseSong }>D</button>
-          <button type="button" onClick={ this.nextSong }>next</button>
+        <div className="player-center">
+          <div>
+            <button type="button" onClick={ this.prevSong }>prev</button>
+            <button type="button" onClick={ this.playPauseSong }>D</button>
+            <button type="button" onClick={ this.nextSong }>next</button>
+          </div>
+
+          <div>
+            <input
+              className="progressBar"
+              type="range"
+              value={ musicProgress }
+              onChange={ this.setProgress }
+              min={ 0 }
+              max={ 100 }
+            />
+          </div>
         </div>
 
-        <div>
+        <div className="player-right">
           <input
             className="progressBar"
             type="range"
-            readOnly
-            value={ musicProgress }
-            onChange={ this.setProgress }
+            onChange={ this.changeVolume }
             min={ 0 }
             max={ 100 }
           />
