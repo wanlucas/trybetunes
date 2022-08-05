@@ -2,27 +2,16 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import searchAlbum from '../services/searchAlbumsAPI';
 import AlbumCard from '../components/AlbumCard';
+import './search.css';
 
 export default class Search extends Component {
   state = {
     artist: '',
-    artistName: '',
-    searchDisabled: true,
     albums: [],
   }
 
-  rules = {
-    minimunSearchLength: 2,
-  }
-
   handleChange = ({ target: { value } }) => {
-    const { minimunSearchLength } = this.rules;
-    const searchValueIsInvalid = value.length < minimunSearchLength;
-
-    this.setState({
-      searchDisabled: searchValueIsInvalid,
-      artist: value,
-    });
+    this.setState({ artist: value });
   }
 
   searchArtist = async (event) => {
@@ -30,41 +19,30 @@ export default class Search extends Component {
     const { artist } = this.state;
     const albums = await searchAlbum(artist);
 
-    this.setState({ albums, artist: '', artistName: artist });
+    this.setState({ albums, artist: '' });
   }
 
   render() {
-    const { searchDisabled, albums, artist, artistName } = this.state;
+    const { albums, artist } = this.state;
 
     return (
-      <div data-testid="page-search">
+      <div className="page-search">
         <Header />
-        <form onSubmit={ this.searchArtist }>
+        <form className="search-artist" onSubmit={ this.searchArtist }>
           <label htmlFor="search-bar">
-            Nome do artista
             <input
               id="search-bar"
               type="text"
+              placeholder="Buscar artista ou album"
               value={ artist }
               data-testid="search-artist-input"
               onChange={ this.handleChange }
             />
           </label>
-
-          <input
-            type="submit"
-            disabled={ searchDisabled }
-            data-testid="search-artist-button"
-            value="Buscar"
-          />
         </form>
 
         <div>
-          <span>{`Resultado de álbuns de: ${artistName}`}</span>
-
           <div className="albums-list">
-            {!albums.length && <span> Nenhum álbum foi encontrado </span>}
-
             {albums.map((album) => (
               <AlbumCard key={ album.collectionId } album={ album } />
             ))}

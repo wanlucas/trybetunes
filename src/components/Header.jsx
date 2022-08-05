@@ -41,9 +41,9 @@ export default class Header extends Component {
 
         <div>
           <nav className="nav-bar">
-            <Link to="/search">Pesquisar</Link>
-            <Link to="/favorites">Favoritas</Link>
-            <Link to="/profile">Perfil</Link>
+            <Link to="/search"><i className="fa-solid fa-magnifying-glass" /></Link>
+            <Link to="/favorites"><i className="fa-solid fa-heart" /></Link>
+            <Link to="/profile"><i className="fa-solid fa-user" /></Link>
           </nav>
         </div>
       </header>

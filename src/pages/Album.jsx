@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './album.css';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
@@ -46,7 +47,7 @@ export default class Album extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-album">
+      <div className="page-album">
         <Header />
 
         {isLoading ? <span>Carregando...</span> : (
