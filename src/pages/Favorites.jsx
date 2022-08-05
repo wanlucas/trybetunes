@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
+import './favorites.css';
 import MusicCard from '../components/MusicCard';
 import Player from '../components/Player';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
@@ -35,6 +36,8 @@ export default class Favorites extends Component {
         <Header />
 
         <div className="favorite_songs">
+          <h2> Suas musicas preferidas </h2>
+
           <ul className="favorite-list">
             {favorites.map((song) => (
               <MusicCard
