@@ -1,11 +1,61 @@
 .player {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   left: 0;
-  bottom: 200px;
-  height: 10vh;
-  background: rgb(177, 177, 177);
+  bottom: 0;
+  height: 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(25, 16, 19);
+  padding: 0 15px;
+}
+
+.player-left {
   display: flex;
-  justify-content: center;
+  width: 15%;
   align-items: center;
+  color: white;
+}
+
+.player-left img {
+  height: 80px;
+  width:  80px;
+}
+
+.player-left div {
+  margin: 0 20px;
+}
+
+.player-center {
+  text-align: center;
+  width: 70%;
+}
+
+.player-controls > button {
+  background: none;
+  width: 30px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin: 0 22px;
+}
+
+.player-controls > button:hover {
+  color: #5b88a5;;
+}
+
+.player-progress {
+  width: 100%;
+}
+
+.progressBar {
+  margin-top: 20px;
+  height: 3px;
+  width: 60%;
+}
+
+.player-right {
+  width: 15%;
 }
