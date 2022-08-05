@@ -33,7 +33,7 @@ export default class MusicCard extends Component {
   }
 
   render() {
-    const { checked, isLoading } = this.state;
+    const { checked } = this.state;
     const { song, play } = this.props;
     const { collectionName, trackName, artworkUrl100, trackId } = song;
 

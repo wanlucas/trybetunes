@@ -21,12 +21,13 @@ export default class Album extends Component {
     const { match: { params: { id } } } = this.props;
     const songs = await getMusics(id);
     const favorites = await getFavoriteSongs();
-    const { artistName, collectionName } = songs[0];
+    const { artistName, collectionName, artworkUrl100 } = songs[0];
 
     this.setState({
       artistName,
       collectionName,
       favorites,
+      artworkUrl100,
       songs: songs.slice(1),
       isLoading: false,
     });
@@ -44,6 +45,7 @@ export default class Album extends Component {
       isLoading,
       favorites,
       actSong,
+      artworkUrl100,
     } = this.state;
 
     return (
@@ -52,8 +54,13 @@ export default class Album extends Component {
 
         {isLoading ? <span>Carregando...</span> : (
           <div>
-            <h2 data-testid="artist-name">{artistName}</h2>
-            <p data-testid="album-name">{collectionName}</p>
+            <div className="album-artist-info">
+              <img src={ artworkUrl100 } alt={ collectionName } />
+              <div>
+                <h2 data-testid="artist-name">{artistName}</h2>
+                <p data-testid="album-name">{collectionName}</p>
+              </div>
+            </div>
 
             <ul className="music-list">
               {songs.map((song) => (

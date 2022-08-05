@@ -1,6 +1,30 @@
+.page-album {
+  text-align: center;
+}
+
+.album-artist-info {
+  display: flex;
+  align-items: center;
+  padding: 30px 10px;
+  background: linear-gradient(to bottom, rgba(25, 16, 19) , rgb(194, 194, 194));
+  gap: 30px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.album-artist-info img {
+  border-radius: 50%;
+  width: 150px;
+}
+
+.album-artist-info div {
+  text-align: left;
+}
+
 .music-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  margin-bottom: 110px;
 }

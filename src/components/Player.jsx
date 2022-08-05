@@ -108,7 +108,7 @@ export default class Player extends Component {
   render() {
     const { musicProgress, actSong, checked, isPaused } = this.state;
     const { trackName, collectionName, artworkUrl60, artistName } = actSong;
-    console.log(actSong);
+
     return (
       <section className="player">
         <div className="player-left">
