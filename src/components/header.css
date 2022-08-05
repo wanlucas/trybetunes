@@ -27,7 +27,7 @@
   align-items: center;
   line-height: 50%;
   font-size: 0.9rem;
-  background: rgba(102, 102, 102, 0.6);
+  background: rgba(207, 207, 207, 0.6);
   color: black;
   font-weight: 500;
   border-radius: 20px;
@@ -35,7 +35,7 @@
 }
 
 .header-user-name {
-  margin: 0 5px;
+  margin: 0 12px;
 }
 
 .default-user-image {
@@ -50,6 +50,13 @@
   border-radius: 50%;
   font-weight: 500;
   color: white;
+}
+
+.profile-image {
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
 }
 
 .nav-bar {

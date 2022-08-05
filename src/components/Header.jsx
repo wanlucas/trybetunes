@@ -33,9 +33,10 @@ export default class Header extends Component {
           <h1>TrybeTunes</h1>
           <div className="user-perfil">
             <span className="header-user-name">{userName}</span>
-            { userImage ? <img src={ userImage } alt={ userName } /> : (
-              <div className="default-user-image">{ userName[0] }</div>
-            ) }
+            { userImage
+              ? <img src={ userImage } alt={ userName } className="profile-image" />
+              : (<div className="default-user-image">{ userName[0] }</div>
+              ) }
           </div>
         </div>
 
