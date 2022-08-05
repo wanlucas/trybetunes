@@ -6,6 +6,7 @@ import './player.css';
 export default class Player extends Component {
   state = {
     checked: false,
+    isPaused: true,
     playlist: [],
     player: new Audio(),
     musicProgress: 0,
@@ -36,6 +37,7 @@ export default class Player extends Component {
     this.setState({
       actSong,
       checked: isFavorite(actSong),
+      isPaused: false,
     });
 
     player.src = actSong.previewUrl;
@@ -64,8 +66,10 @@ export default class Player extends Component {
   playPauseSong = () => {
     const { player } = this.state;
 
+    if (!player.src.length) return;
     if (player.paused) player.play();
     else player.pause();
+    this.setState({ isPaused: player.paused });
   }
 
   setProgress = ({ target: { value } }) => {
@@ -102,9 +106,9 @@ export default class Player extends Component {
   }
 
   render() {
-    const { musicProgress, actSong, checked } = this.state;
-    const { trackName, collectionName, artworkUrl60 } = actSong;
-
+    const { musicProgress, actSong, checked, isPaused } = this.state;
+    const { trackName, collectionName, artworkUrl60, artistName } = actSong;
+    console.log(actSong);
     return (
       <section className="player">
         <div className="player-left">
@@ -112,20 +116,30 @@ export default class Player extends Component {
 
           <div>
             <h5>{ trackName }</h5>
-            <p>{ collectionName }</p>
+            <p>{ artistName }</p>
           </div>
 
           <input type="checkbox" checked={ checked } onChange={ this.handleFavorite } />
         </div>
 
         <div className="player-center">
-          <div>
-            <button type="button" onClick={ this.prevSong }>prev</button>
-            <button type="button" onClick={ this.playPauseSong }>D</button>
-            <button type="button" onClick={ this.nextSong }>next</button>
+          <div className="player-controls">
+            <button type="button" onClick={ this.prevSong }>
+              <i className="fa-solid fa-backward-step" />
+            </button>
+
+            <button type="button" onClick={ this.playPauseSong }>
+              { isPaused
+                ? <i className="fa-solid fa-play" />
+                : <i className="fa-solid fa-pause" />}
+            </button>
+
+            <button type="button" onClick={ this.nextSong }>
+              <i className="fa-solid fa-forward-step" />
+            </button>
           </div>
 
-          <div>
+          <div className="player-progress">
             <input
               className="progressBar"
               type="range"
