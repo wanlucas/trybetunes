@@ -1,0 +1,67 @@
+.music_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 80%;
+  border-radius: 2px;
+  padding: 0 10px;
+  height: 70px;
+  user-select: none;
+}
+
+.music_card-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.music_card-left button {
+  background: none;
+  border: none;
+  font-size: 0;
+}
+
+.music_card:hover button {
+  transition: 0.2s;
+  font-size: 17px;
+}
+
+.music_card:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.music_card button:hover {
+  color: rgb(91, 136, 165);
+}
+
+.music_card img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+}
+
+.favorite {
+  transition: 1s;
+  color: crimson;
+  animation: favorite 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+@keyframes favorite {
+  33% {
+    transform: translateY(-40%);
+  }
+
+  66% {
+    transform: translateY(40%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.toggle_favorite-input {
+  opacity: 0;
+}

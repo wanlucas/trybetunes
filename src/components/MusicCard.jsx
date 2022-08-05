@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './musicCard.css';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 export default class MusicCard extends Component {
@@ -36,25 +37,29 @@ export default class MusicCard extends Component {
     const { song, play } = this.props;
     const { collectionName, trackName, artworkUrl100, trackId } = song;
 
-    return isLoading ? <span>Carregando...</span> : (
+    return (
       <li className="music_card">
         <div className="music_card-left">
-          <input
+          <button
             type="button"
-            value="Play"
             onClick={ () => play(song) }
-          />
+          >
+            <i className="fa-solid fa-play" />
+          </button>
           <img src={ artworkUrl100 } alt={ collectionName } />
           <h3>{ trackName }</h3>
         </div>
 
         <div className="music_card-right">
-          <label htmlFor="toggle-favorite">
-            Favorita
+          <label htmlFor={ `toggle_${trackId}-favorite` }>
+            { checked
+              ? <i className="fa-solid fa-heart favorite" />
+              : <i className="fa-regular fa-heart" />}
+
             <input
-              id="toggle-favorite"
+              id={ `toggle_${trackId}-favorite` }
+              className="toggle_favorite-input"
               type="checkbox"
-              className="favorite-icon"
               value="Favorite"
               checked={ checked }
               onChange={ this.handleChange }
