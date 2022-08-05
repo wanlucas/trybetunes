@@ -1,0 +1,42 @@
+.music-card {
+  position: relative;
+  width: 180px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.music-card:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.music-card:hover::after {
+  transition: 0.3s;
+  opacity: 1;
+}
+
+.music-card::after {
+  content: '▶️';
+  position: absolute;
+  right: 10%;
+  bottom: 50%;
+  font-size: 30px;
+  color: black;
+  opacity: 0;
+}
+
+
+.artist-image {
+  width: 100%;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.artist-info {
+  color: black;
+  font-size: 0.9rem;
+}
