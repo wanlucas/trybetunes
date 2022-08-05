@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import './profileEdit.css';
 import { getUser, updateUser } from '../services/userAPI';
 
 export default class ProfileEdit extends Component {
@@ -55,6 +56,7 @@ export default class ProfileEdit extends Component {
         <form className="user_profile-edit">
           <div className="user_form-header">
             <img src={ image } alt={ name } />
+            <br />
             <input
               type="text"
               name="image"
@@ -66,9 +68,8 @@ export default class ProfileEdit extends Component {
           </div>
 
           <div className="user_form-info">
-            Editar perfil
             <label htmlFor="user-name">
-              Nome
+              <br />
               <input
                 type="text"
                 id="user-name"
@@ -81,6 +82,7 @@ export default class ProfileEdit extends Component {
             </label>
 
             <label htmlFor="user-email">
+              <br />
               <input
                 id="user-email"
                 type="email"
@@ -92,18 +94,23 @@ export default class ProfileEdit extends Component {
               />
             </label>
 
-            <textarea
-              name="description"
-              cols="30"
-              rows="10"
-              value={ description }
-              onChange={ this.handleChange }
-              data-testid="edit-input-description"
-            />
+            <label htmlFor="user-description">
+              <br />
+              <textarea
+                id="user-description"
+                name="description"
+                cols="30"
+                rows="10"
+                placeholder="Description"
+                value={ description }
+                onChange={ this.handleChange }
+                data-testid="edit-input-description"
+              />
+            </label>
 
             <button
               type="button"
-              data-testid="edit-button-save"
+              id="edit-button-save"
               onClick={ this.save }
               disabled={ saveButonDisabled }
             >

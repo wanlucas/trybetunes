@@ -1,0 +1,59 @@
+
+
+.user_profile-edit {
+  position: absolute;
+  inset: 0;
+  top: 10%;
+  margin: auto;
+  width: 600px;
+  height: 450px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.user_profile-edit input {
+  border: none;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  padding: 0 10px;
+  height: 23px;
+  width: 60%;
+}
+
+.user_form-header {
+  display: block;
+  margin-bottom: 25px;
+}
+
+.user_form-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.user_form-info {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-description {
+  height: 80px;
+  width: 60%;
+}
+
+#edit-button-save {
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  width: 120px;
+  height: 40px;
+  color: white;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 2px;
+}
