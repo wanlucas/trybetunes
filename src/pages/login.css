@@ -21,7 +21,7 @@
   filter: blur(10);
 }
   
-.form-login > input {
+.form-login > input:not(.login-submit-button) {
   margin: 10px 0;
   width: 70%;
   height: 20px;

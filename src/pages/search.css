@@ -1,0 +1,34 @@
+.page-search {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.search-artist {
+  margin: 10px 0;
+  padding: 2px;
+}
+
+#search-bar {
+  border-radius: 5px 0 0 5px;
+  background: transparent;
+  width: 400px;
+  height: 27px;
+  padding: 4px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  outline: none;
+  border-radius: 5px;
+}
+
+#search-bar:focus {
+  border-color:black;
+}
+
+.albums-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  flex-wrap: wrap;
+}

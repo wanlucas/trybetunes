@@ -26,9 +26,10 @@
   align-items: center;
   line-height: 50%;
   font-size: 0.9rem;
-  background: #243a69;
+  background: rgba(102, 102, 102, 0.6);
+  color: black;
+  font-weight: 500;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1px;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .default-user-image {
-  background: rgba(255, 255, 255, 0.8);
+  background: #5b88a5;
   width: 28px;
   height: 28px;
   display: flex;
@@ -47,7 +48,7 @@
   margin-left: 18px;
   border-radius: 50%;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 .nav-bar {
