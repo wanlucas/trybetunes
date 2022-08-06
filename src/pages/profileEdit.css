@@ -5,8 +5,8 @@
   inset: 0;
   top: 10%;
   margin: auto;
-  width: 600px;
-  height: 450px;
+  width: 400px;
+  height: 480px;
 
   background-color: rgba(255, 255, 255, 0.5);
   padding: 20px;
@@ -22,8 +22,8 @@
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   padding: 0 10px;
-  height: 23px;
-  width: 60%;
+  height: 24px;
+  width: 100%;
 }
 
 .user_form-header {
@@ -32,9 +32,10 @@
 }
 
 .user_form-header img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
+  margin: 10px 0;
 }
 
 .user_form-info {
@@ -44,16 +45,24 @@
 
 #user-description {
   height: 80px;
-  width: 60%;
+  width: 100%;
+  padding: 0 10px;
 }
 
 #edit-button-save {
   border: none;
   background: rgba(0, 0, 0, 0.5);
-  width: 120px;
+  width: 140px;
   height: 40px;
   color: white;
   padding: 5px 10px;
   margin: 10px 0;
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+  font-size: 0.8rem;
+}
+
+#edit-button-save:enabled {
+  background: rgba(0, 0, 0, 0.7);
+  animation: button-enabled 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
