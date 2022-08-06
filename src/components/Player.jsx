@@ -119,7 +119,19 @@ export default class Player extends Component {
             <p>{ artistName }</p>
           </div>
 
-          <input type="checkbox" checked={ checked } onChange={ this.handleFavorite } />
+          <label htmlFor="player-favorite">
+            { checked
+              ? <i className="fa-solid fa-heart favorite" />
+              : <i className="fa-regular fa-heart" />}
+
+            <input
+              className="toggle_favorite-input"
+              id="player-favorite"
+              type="checkbox"
+              checked={ checked }
+              onChange={ this.handleFavorite }
+            />
+          </label>
         </div>
 
         <div className="player-center">
@@ -152,6 +164,7 @@ export default class Player extends Component {
         </div>
 
         <div className="player-right">
+          <i className="fa-solid fa-volume-high volume" />
           <input
             className="progressBar"
             type="range"

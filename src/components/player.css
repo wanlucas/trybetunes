@@ -51,11 +51,20 @@
 }
 
 .progressBar {
-  margin-top: 20px;
   height: 3px;
   width: 60%;
 }
 
 .player-right {
   width: 15%;
+}
+
+.player-right {
+  display: flex;
+  align-items: center;
+}
+
+.volume {
+  margin: 0 15px;
+  color: white;
 }
