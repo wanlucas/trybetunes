@@ -14,7 +14,7 @@
 
 .player-left {
   display: flex;
-  width: 15%;
+  width: 25%;
   align-items: center;
   color: white;
 }
@@ -25,12 +25,17 @@
 }
 
 .player-left div {
+  text-align: left;
   margin: 0 20px;
+}
+
+.player-left div p {
+  font-size: 0.7rem;
 }
 
 .player-center {
   text-align: center;
-  width: 70%;
+  width: 45%;
 }
 
 .player-controls > button {
@@ -50,9 +55,13 @@
   width: 100%;
 }
 
+player-center .progressBar {
+  margin-top: 10px;
+}
+
 .progressBar {
   height: 3px;
-  width: 60%;
+  width: 100%;
 }
 
 .player-right {
@@ -61,7 +70,13 @@
 
 .player-right {
   display: flex;
+  width: 25%;
   align-items: center;
+  justify-content: right;
+}
+
+.player-right .progressBar {
+  width: 50%;
 }
 
 .volume {
