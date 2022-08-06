@@ -6,7 +6,6 @@ import { addSong, removeSong } from '../services/favoriteSongsAPI';
 export default class MusicCard extends Component {
   state = {
     checked: false,
-    isLoading: false,
   }
 
   componentDidMount() {
@@ -21,14 +20,12 @@ export default class MusicCard extends Component {
     const { song, updateFavorites } = this.props;
 
     this.setState({
-      isLoading: true,
       checked,
     });
 
     if (checked) await addSong(song);
     else await removeSong(song);
 
-    this.setState({ isLoading: false });
     if (updateFavorites) updateFavorites();
   }
 

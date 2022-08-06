@@ -52,7 +52,7 @@ export default class Album extends Component {
       <div className="page-album">
         <Header />
 
-        {isLoading ? <span>Carregando...</span> : (
+        {isLoading ? <span><i className="fa-solid fa-spinner spining" /></span> : (
           <div>
             <div className="album-artist-info">
               <img src={ artworkUrl100 } alt={ collectionName } />

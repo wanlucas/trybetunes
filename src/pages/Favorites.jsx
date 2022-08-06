@@ -31,7 +31,7 @@ export default class Favorites extends Component {
   render() {
     const { favorites, isLoading, actSong } = this.state;
 
-    return isLoading ? <span>Carregando...</span> : (
+    return isLoading ? <span><i className="fa-solid fa-spinner spining" /></span> : (
       <div data-testid="page-favorites">
         <Header />
 

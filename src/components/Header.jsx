@@ -7,7 +7,6 @@ export default class Header extends Component {
   state = {
     userName: '',
     userImage: '',
-    isLoading: true,
   };
 
   componentDidMount() {
@@ -20,14 +19,13 @@ export default class Header extends Component {
     this.setState({
       userName: name,
       userImage: image,
-      isLoading: false,
     });
   }
 
   render() {
-    const { userName, isLoading, userImage } = this.state;
+    const { userName, userImage } = this.state;
 
-    return isLoading ? <div> Carregando... </div> : (
+    return (
       <header className="header-component">
         <div className="header-top">
           <h1>TrybeTunes</h1>

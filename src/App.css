@@ -22,3 +22,23 @@ img {
   width: 100%;
   object-fit: cover;
 }
+
+.spining {
+  animation: spining 4s infinite linear;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+@keyframes spining {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

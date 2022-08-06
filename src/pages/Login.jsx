@@ -45,7 +45,7 @@ export default class Login extends Component {
   render() {
     const { loginDisabled, isLoading } = this.state;
 
-    return isLoading ? <div> Carregando... </div> : (
+    return isLoading ? <span><i className="fa-solid fa-spinner spining" /></span> : (
       <div className="page-login">
         <form className="form-login">
           <input
