@@ -97,9 +97,9 @@ export default class Player extends Component {
   }
 
   handleFavorite = async ({ target: { checked } }) => {
-    const { actSong } = this.state;
+    const { actSong, id } = this.state;
 
-    if (!actSong.length) return;
+    if (!id) return;
     if (checked) await addSong(actSong);
     else await removeSong(actSong);
 

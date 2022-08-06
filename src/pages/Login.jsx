@@ -54,6 +54,7 @@ export default class Login extends Component {
             name="name"
             placeholder="Name"
             data-testid="login-name-input"
+            autoComplete="off"
           />
 
           <input
