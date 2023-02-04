@@ -55,7 +55,7 @@ export default class ProfileEdit extends Component {
 
         <form className="user_profile-edit">
           <div className="user_form-header">
-            <img src={ image } alt={ name } />
+            { image && <img src={ image } alt={ name } /> }
             <br />
             <input
               type="text"

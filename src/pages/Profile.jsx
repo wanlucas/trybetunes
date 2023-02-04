@@ -30,7 +30,8 @@ export default class Profile extends Component {
         <div className="user-profile">
           <div className="profile-header">
             <div>
-              <img src={ image } alt={ name } className="profile-image" />
+              { image !== '-'
+                && <img src={ image } alt={ name } className="profile-image" /> }
               <h2 className="profile-user_name">{name}</h2>
             </div>
             <Link to="profile/edit">Editar perfil</Link>
